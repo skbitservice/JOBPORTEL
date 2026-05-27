@@ -1,0 +1,13 @@
+import crypto from "crypto";
+
+export const createApplicationId = () => {
+  const date = new Date();
+  const stamp = [
+    date.getFullYear(),
+    String(date.getMonth() + 1).padStart(2, "0"),
+    String(date.getDate()).padStart(2, "0")
+  ].join("");
+  const suffix = crypto.randomBytes(3).toString("hex").toUpperCase();
+
+  return `HW-${stamp}-${suffix}`;
+};
